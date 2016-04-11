@@ -26,9 +26,12 @@ class YelpAPI
      *
      * @return array
      */
-    public function search()
+    public function option()
     {
-        $response = $this->client->get("v2/search/?location=90291&sort=1&category_filter=mexican", ['auth' => 'oauth']);
-        return array_pluck(json_decode($response->getBody(), true)['businesses'], 'name');
+        $response = $this->client->get("v2/search/?location=90291&sort=0&category_filter=mexican&limit=10", ['auth' => 'oauth']);
+        $index = rand(0, 9);
+        $results_array = array_pluck(json_decode($response->getBody(), true)['businesses'], 'name');
+
+        return $results_array[$index];
     }
 }

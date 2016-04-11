@@ -12,9 +12,5 @@
 */
 
 Route::get('/', function () {
-	$results = Yelp::search();
-
-	foreach ( $results as $result ) {
-		echo $result . "<br />";
-	}
+	return Yelp::option();
 });
