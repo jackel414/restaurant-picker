@@ -3,6 +3,7 @@
 namespace App\Yelp;
 
 use GuzzleHttp\Client;
+use Request;
 
 class YelpAPI
 {
@@ -28,7 +29,14 @@ class YelpAPI
      */
     public function option()
     {
-        $response = $this->client->get("v2/search/?location=90291&sort=0&category_filter=mexican&limit=10", ['auth' => 'oauth']);
+        $category = Request::get('category');
+        $zip = Request::get('zip');
+
+        if ( $zip === '' || $category === '' ) {
+            return false;
+        }
+
+        $response = $this->client->get("v2/search/?location=$zip&sort=0&category_filter=$category&limit=10", ['auth' => 'oauth']);
         $index = rand(0, 9);
         $results_array = array_pluck(json_decode($response->getBody(), true)['businesses'], 'name');
 

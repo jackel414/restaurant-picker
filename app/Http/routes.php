@@ -13,5 +13,8 @@
 
 Route::get('/', function () {
 	return view('home');
-	// return Yelp::option();
+});
+
+Route::get('/picker', function() {
+	return Yelp::option();
 });

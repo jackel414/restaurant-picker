@@ -17,8 +17,13 @@
             &nbsp;
         </div>
         <div class="row">
-            <button type="submit" class="btn btn-default">Submit</button>
+            <button type="submit" class="btn btn-default" id="submit_button">Submit</button>
         </div>
     </form>
+
+    <div id="page_loading"><img src="ajax-loader.gif" height="60" width="60"/></div>
+    <div class="text-center" id="results_container">
+        <p id="yelp_result" class="collapse lead"></p>
+    </div>
 </div>
 @endsection
