@@ -13,7 +13,9 @@
 </head>
 <body id="app-layout">
     <div id="logo" class="text-center">
-        <img src="logo.png" alt="logo" width="300" height="260"/>
+        <a href="/">
+            <img src="logo.png" alt="logo" width="300" height="260"/>
+        </a>
     </div>
     @yield('content')
 

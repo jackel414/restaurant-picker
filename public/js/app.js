@@ -1,5 +1,6 @@
 $(document).ready(function() {
-    var container = $("#yelp_result");
+    var success_container = $("#results_container");
+    var error_container = $("#error_container");
     var pageLoading = $("#page_loading");
 
 	$("#submit_button").on("click", function(e) {
@@ -12,7 +13,8 @@ $(document).ready(function() {
 			return false;
 		}
 
-		container.html("&nbsp;");
+		success_container.hide();
+		error_container.hide();
 		pageLoading.show();
 
 		$.ajax({
@@ -21,15 +23,32 @@ $(document).ready(function() {
 			success: function(result) {
 				console.log(result);
 				pageLoading.hide();
-				container.html(result);
-				container.show();
+				success_container.html(
+									`<p id='restaurant-title' class='lead' rel='` + result.url + `'>` + result.name + `</p>
+							        <div class='row'>
+							            <div class='col-xs-6 text-right'>
+							                <img src='` + result.image_url + `' />
+							            </div>
+							            <div class='col-xs-6 text-left padding-top-small'>
+							                <img src='` + result.rating_img_url + `' />
+							                <p class='small'>` + result.review_count + ` Reviews</p>
+							                <p class='small'>` + result.location.address[0] + `<br />` + result.location.city + `, ` + result.location.state_code + ` ` + result.location.postal_code + `</p>
+							            </div>
+							        </div>
+							        <img id='yelp-logo' src='yelp_powered_btn_light.png' width='129' height='30' />`
+							    );
+				success_container.show();
 			},
 			error: function() {
-				console.log('failed');
 				pageLoading.hide();
-				container.html('No Options Available');
-				container.show();
+				error_container.show();
 			}
 		});	
+	});
+
+	success_container.on('click', function() {
+		var url = $("#restaurant-title").attr("rel");
+		console.log(url);
+		window.open(url, '_blank');
 	});
 });

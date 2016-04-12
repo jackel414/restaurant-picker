@@ -39,8 +39,12 @@
     </form>
 
     <div id="page_loading"><img src="ajax-loader.gif" height="60" width="60"/></div>
-    <div class="text-center" id="results_container">
-        <p id="yelp_result" class="collapse lead"></p>
+
+    <div id="results_container" class="collapse text-center col-sm-4 col-sm-offset-4 btn btn-default">
+    </div>
+
+    <div id="error_container" class="collapse">
+        <p class="lead">No Options Available</p>
     </div>
 </div>
 @endsection

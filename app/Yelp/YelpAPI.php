@@ -38,7 +38,7 @@ class YelpAPI
 
         $response = $this->client->get("v2/search/?location=$zip&sort=0&category_filter=$category&limit=10", ['auth' => 'oauth']);
         $index = rand(0, 9);
-        $results_array = array_pluck(json_decode($response->getBody(), true)['businesses'], 'name');
+        $results_array = json_decode($response->getBody(), true)['businesses'];
 
         return $results_array[$index];
     }
