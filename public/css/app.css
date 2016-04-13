@@ -1,3 +1,11 @@
+html {
+  position: relative;
+  min-height: 100%; }
+
+body {
+  margin: 0 0 0;
+  /* bottom = footer height */ }
+
 #logo {
   padding-top: 30px;
   padding-bottom: 30px; }
@@ -28,5 +36,13 @@
 
 #restaurant-title {
   margin-bottom: 10px; }
+
+#footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 25px;
+  width: 100%;
+  padding: 0 0 10px 10px; }
 
 /*# sourceMappingURL=app.css.map */

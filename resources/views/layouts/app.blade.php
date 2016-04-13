@@ -19,6 +19,11 @@
     </div>
     @yield('content')
 
+    <div id="footer">
+        <div>
+            <p>&#169; <a href="http://mays.io" target="_blank">Mays | io</a></p>
+        </div>
+    </div>
     <!-- JavaScripts -->
     <script src="js/jquery.min.js"></script>
     <script src="js/app.js"></script>
